@@ -1,59 +1,40 @@
-# AI-Powered Assistant 
+# AI-Powered Assistant
 ## API Requirements
 
 ### 1. Document Processing & Parsing API
 
-*   **Purpose:** Extract text and data from uploaded legal documents.
-*   **Technology:** Azure AI Document Intelligence (recommended)
+*   **Technology:** Python libraries (PDFMiner, Tika)
 *   **Functionality:**
     *   Parse PDF, DOCX, and TXT files.
-    *   Extract text, tables, and layout information.
-    *   Potentially extract key-value pairs for metadata.
+    *   Extract text, tables, and basic layout information.
+    *   Implement a custom API (Flask/FastAPI).
 
 ### 2. AI Assistant Chat API
 
-*   **Purpose:** Power the interactive chat interface and provide AI-powered responses.
-*   **Technology:** Langchain with OpenAI API (or Azure OpenAI Service)
+*   **Technology:** Langchain with a locally hosted LLM (Hugging Face Transformers)
+*   **LLM Options:**
+    *   Mistral 7B (quantized)
+    *   Llama 2 (quantized)
 *   **Functionality:**
-    *   Question Answering: Answer user questions about legal documents and topics.
-    *   Summarization: Generate concise summaries of legal documents.
-    *   Key Phrase Extraction: Identify important phrases in documents and queries.
-    *   Entity Recognition: Identify legal entities (names, dates, organizations, etc.).
-    *   Conversational Interface: Maintain context and provide natural-sounding responses.
+    *   Question Answering
+    *   Summarization
+    *   Key Phrase Extraction
+    *   Learning Loop (integrate user feedback).
 
-### 3.Knowledge Base API
+### 3. Legal Knowledge Base API
 
-*   **Purpose:** Provide access to a searchable legal knowledge base.
-*   **Technology:** Vector Database (Pinecone, Chroma, FAISS) with Langchain
+*   **Technology:** Vector Database (FAISS or ChromaDB)
+*   **Embedding Model:** Sentence Transformers (`all-mpnet-base-v2`)
 *   **Functionality:**
-    *   Store legal definitions, case law summaries, statute excerpts, etc., as embeddings.
-    *   Perform semantic search to find relevant information based on user queries.
-    *   (Optional) Integrate with external legal databases (LexisNexis, Westlaw) via their APIs.
+    *   Embed legal data for semantic search.
 
 ### 4. User Authentication API
 
-*   **Purpose:** Handle user registration, login, and account management.
-*   **Technology:** (Choose one)
-    *   Auth0
-    *   Firebase Authentication
-    *   AWS Cognito
+*   **Technology:** Flask-Login or Django authentication
+*   **Database:** PostgreSQL, MySQL, or SQLite
 *   **Functionality:**
-    *   User registration and login.
-    *   Password management.
-    *   Secure storage of user credentials.
+    *   User management.
 
-### 5. Analytics API
 
-*   **Purpose:** Track usage, performance, and the value the AI provides.
-*   **Technology:** (Choose one)
-    *   Google Analytics
-    *   Mixpanel
-    *   Custom analytics implementation
-*   **Functionality:**
-    *   Track time saved by users.
-    *   Monitor the number of cases analyzed.
-    *   Measure the success rate of the AI.
-    *   Analyze task intensity.
-    *   Provide insights into user behavior.
 
 
